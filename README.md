@@ -1,6 +1,7 @@
 O front-end da aplicação foi desenvolvido utilizando o framework Angular, com o objetivo de construir uma Single Page Application (SPA) moderna e responsiva. Para isso, foram adotadas as seguintes ferramentas e boas práticas:
 
 Tecnologias Utilizadas
+
 Angular Material: Utilizado para construção da interface com componentes prontos, acessíveis e responsivos.
 
 Tailwind CSS: Framework de utilitários CSS para estilização ágil e personalizada dos elementos da interface.
@@ -10,9 +11,11 @@ Angular Router: Gerenciamento de rotas para navegação entre as páginas da apl
 Angular Services: Centralização das requisições HTTP e lógica de comunicação com o back-end.
 
 Estrutura do Projeto
+
 O projeto foi organizado com separação clara entre componentes, serviços e módulos. Cada funcionalidade possui sua própria pasta com os respectivos arquivos, mantendo a coesão e facilitando a manutenção.
 
 Autenticação e Controle de Acesso
+
 As informações do usuário autenticado, incluindo o token JWT e o perfil (admin ou usuário comum), são armazenadas de forma segura no localStorage.
 
 TELA LOGIN
