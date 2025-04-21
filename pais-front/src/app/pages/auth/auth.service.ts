@@ -1,4 +1,3 @@
-// src/app/core/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -8,13 +7,13 @@ import { Observable, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private API = 'http://localhost:8080'; // ajuste conforme necessário
+  private API = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
   login(payload: UsuarioDTO) {
     return this.http.post<UsuarioAutenticado>(`${this.API}/usuario/autenticar`, payload, {
-      withCredentials: true // <-- isso envia cookies/sessões se necessário
+      withCredentials: true
     }).pipe(
       tap(user => {
         localStorage.setItem('token', user.token);

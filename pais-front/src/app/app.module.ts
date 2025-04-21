@@ -23,7 +23,7 @@ import { PaisesModule } from './pages/paises/paises.module';
     PaisesModule
   ],
   providers: [
-    provideClientHydration(withEventReplay()) // Mantém seu código existente
+    provideClientHydration(withEventReplay())
   ],
   bootstrap: [AppComponent]
 })
