@@ -1,4 +1,5 @@
 O front-end da aplicação foi desenvolvido utilizando o framework Angular, com o objetivo de construir uma Single Page Application (SPA) moderna e responsiva. Para isso, foram adotadas as seguintes ferramentas e boas práticas:
+
 Tecnologias Utilizadas
 Angular Material: Utilizado para construção da interface com componentes prontos, acessíveis e responsivos.
 
