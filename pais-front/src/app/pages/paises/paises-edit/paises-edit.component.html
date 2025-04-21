@@ -1,0 +1,34 @@
+<div class="p-6 max-w-xl mx-auto">
+  <h2 class="text-2xl font-bold mb-4">
+    {{ editando ? 'Editar País' : 'Novo País' }}
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()" class="space-y-4">
+    <mat-form-field class="w-full">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" maxlength="20" required />
+      <mat-error *ngIf="form.get('nome')?.invalid">Nome é obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Sigla</mat-label>
+      <input matInput formControlName="sigla" maxlength="2" required />
+      <mat-error *ngIf="form.get('sigla')?.invalid">Sigla é obrigatória</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>gentilico</mat-label>
+      <input matInput formControlName="gentilico" maxlength="25" required />
+      <mat-error *ngIf="form.get('gentilico')?.invalid">gentilico é obrigatória</mat-error>
+    </mat-form-field>
+
+    <div class="flex gap-4 mt-6">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Salvar
+      </button>
+      <button mat-button color="warn" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,90 @@
+<div class="p-4">
+  <div class="flex justify-between items-center mb-3">
+    <h2 class="text-2xl font-semibold">Lista de Países</h2>
+    <button mat-button color="warn" (click)="sair()">
+      Sair
+    </button>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="mb-4"
+    routerLink="/new"
+    *ngIf="getAdmin()"
+  >
+    Novo País
+  </button>
+
+  <mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+
+  <div class="mb-4 flex gap-2 items-center">
+    <input
+      [(ngModel)]="filtro"
+      placeholder="Pesquisar por nome"
+      class="mb-4"
+    />
+    <button mat-raised-button color="primary" class="mb-4" (click)="pesquisar(filtro)">Buscar</button>
+  </div>
+
+  <table
+    *ngIf="!loading"
+    mat-table
+    [dataSource]="paises"
+    class="min-w-full bg-white shadow-md rounded-xl overflow-hidden"
+  >
+  <!-- Ações -->
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let pais" class="p-1">
+      <div class="flex gap-0.5">
+      <button
+        mat-icon-button
+        color="primary"
+        [routerLink]="['/edit', pais.id]"
+        matTooltip="Editar"
+        *ngIf="getAdmin()"
+        >
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="excluir(pais.id)"
+        matTooltip="Excluir"
+        *ngIf="getAdmin()"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    </td>
+  </ng-container>
+
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let pais"> {{ pais.id }} </td>
+    </ng-container>
+
+    <!-- Nome -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let pais"> {{ pais.nome }} </td>
+    </ng-container>
+
+    <!-- Sigla -->
+    <ng-container matColumnDef="sigla">
+      <th mat-header-cell *matHeaderCellDef> Sigla </th>
+      <td mat-cell *matCellDef="let pais"> {{ pais.sigla }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gentilico">
+      <th mat-header-cell *matHeaderCellDef> gentilico </th>
+      <td mat-cell *matCellDef="let pais"> {{ pais.gentilico }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['acoes', 'id', 'nome', 'sigla', 'gentilico' ]"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['acoes', 'id', 'nome', 'sigla', 'gentilico'] ;"></tr>
+  </table>
+</div>
